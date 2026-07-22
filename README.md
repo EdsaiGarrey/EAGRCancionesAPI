@@ -57,6 +57,8 @@ https://github.com/EdsaiGarrey/EAGRCancionesAPI
 | Método | Endpoint | Descripción |
 |---|---|---|
 | POST | `/api/register` | Registrar usuario |
+<img width="1672" height="644" alt="image" src="https://github.com/user-attachments/assets/5d577e41-9119-46d5-bd11-c1edfc30d44c" />
+
 | POST | `/api/login` | Iniciar sesión |
 | GET | `/api/me` | Consultar usuario autenticado |
 | POST | `/api/logout` | Cerrar sesión |
