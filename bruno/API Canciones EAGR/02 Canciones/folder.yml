@@ -1,0 +1,8 @@
+﻿info:
+  name: 02 Canciones
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+

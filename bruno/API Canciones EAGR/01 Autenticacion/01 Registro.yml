@@ -1,0 +1,30 @@
+﻿info:
+  name: 01 Registro
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://82.25.93.110:8082/api/register
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Edsai Garcia",
+        "email": "edsai.canciones13@example.com",
+        "password": "Canciones2026#",
+        "password_confirmation": "Canciones2026#"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+

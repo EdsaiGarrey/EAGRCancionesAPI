@@ -1,0 +1,45 @@
+﻿info:
+  name: 01 Crear canción
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://82.25.93.110:8082/api/canciones
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "titulo": "Luz de Mexico",
+        "artista": "Edsai Garcia",
+        "album": "Caminos del Sur",
+        "genero": "Regional Mexicano",
+        "compositor": "Edsai Garcia Reyes",
+        "sello_discografico": "Garrey Music",
+        "fecha_lanzamiento": "2026-07-21",
+        "duracion_segundos": 238,
+        "numero_pista": 1,
+        "idioma": "Español",
+        "bpm": 96,
+        "tonalidad": "Sol mayor",
+        "precio": 19.90,
+        "calificacion": 4.8,
+        "reproducciones": 125000,
+        "explicita": false,
+        "disponible": true
+      }
+  auth:
+    type: bearer
+    token: {{token}}
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+

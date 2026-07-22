@@ -1,0 +1,38 @@
+﻿info:
+  name: 05 Validación incorrecta
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://82.25.93.110:8082/api/canciones
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "titulo": "",
+        "artista": "",
+        "genero": "",
+        "duracion_segundos": 0,
+        "idioma": "",
+        "bpm": 500,
+        "precio": -20,
+        "calificacion": 8,
+        "explicita": false,
+        "disponible": true
+      }
+  auth:
+    type: bearer
+    token: {{token}}
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+

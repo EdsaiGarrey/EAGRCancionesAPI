@@ -1,0 +1,33 @@
+﻿info:
+  name: 04 Actualizar canción
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: http://82.25.93.110:8082/api/canciones/1
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "titulo": "Luz de Oaxaca - Versión Especial",
+        "precio": 24.90,
+        "calificacion": 5,
+        "reproducciones": 150000,
+        "disponible": true
+      }
+  auth:
+    type: bearer
+    token: {{token}}
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
