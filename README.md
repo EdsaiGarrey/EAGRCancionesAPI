@@ -1,58 +1,654 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+EAGRCancionesAPI
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+API REST desarrollada con Laravel para gestionar usuarios y canciones.El sistema utiliza Laravel Sanctum para autenticación mediante tokens, MySQL como base de datos y Bruno para realizar las pruebas de los endpoints.
 
-## About Laravel
+Autor
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Edsai Alejandro García Reyes
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Descripción
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+El proyecto permite registrar usuarios, iniciar sesión y administrar canciones mediante operaciones CRUD:
 
-## Learning Laravel
+Crear canciones.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Listar canciones.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Consultar una canción por ID.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Actualizar canciones.
 
-## Agentic Development
+Eliminar canciones.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Validar datos incorrectos.
 
-```bash
-composer require laravel/boost --dev
+Consultar al usuario autenticado.
 
-php artisan boost:install
-```
+Cerrar sesión y revocar el token actual.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Cada canción pertenece al usuario que la creó. Un usuario no puede consultar, modificar o eliminar canciones de otra cuenta.
 
-## Contributing
+Tecnologías utilizadas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+PHP 8.3
 
-## Code of Conduct
+Laravel 13
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Laravel Sanctum
 
-## Security Vulnerabilities
+MySQL 8
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Eloquent ORM
 
-## License
+Nginx
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ubuntu Server 24.04
+
+Bruno
+
+Git y GitHub
+
+Composer
+
+API desplegada en VPS
+
+La API está publicada en:
+
+http://82.25.93.110:8082/api
+
+Al abrir la URL principal debe responder un JSON similar a:
+
+{
+  "message": "API de canciones funcionando correctamente.",
+  "status": "online",
+  "version": "1.0",
+  "endpoints": {
+    "register": "/api/register",
+    "login": "/api/login",
+    "canciones": "/api/canciones"
+  }
+}
+
+Repositorio
+
+https://github.com/EdsaiGarrey/EAGRCancionesAPI
+
+Funcionalidades principales
+
+Autenticación
+
+Registro de usuarios.
+
+Inicio de sesión.
+
+Generación de tokens Bearer.
+
+Consulta del usuario autenticado.
+
+Cierre de sesión.
+
+Revocación del token actual.
+
+Contraseñas cifradas.
+
+Protección de rutas con auth:sanctum.
+
+Gestión de canciones
+
+Registro de canciones.
+
+Listado paginado.
+
+Consulta por ID.
+
+Actualización parcial con PATCH.
+
+Eliminación.
+
+Validación de campos.
+
+Protección por propietario.
+
+Endpoints
+
+Verificación del servidor
+
+Método
+
+Endpoint
+
+Descripción
+
+Autenticación
+
+GET
+
+/api
+
+Verifica que la API esté en línea
+
+No
+
+Autenticación
+
+Método
+
+Endpoint
+
+Descripción
+
+Autenticación
+
+POST
+
+/api/register
+
+Registra un usuario
+
+No
+
+POST
+
+/api/login
+
+Inicia sesión y genera un token
+
+No
+
+GET
+
+/api/me
+
+Consulta al usuario autenticado
+
+Bearer Token
+
+POST
+
+/api/logout
+
+Cierra sesión y elimina el token actual
+
+Bearer Token
+
+Canciones
+
+Método
+
+Endpoint
+
+Descripción
+
+Autenticación
+
+POST
+
+/api/canciones
+
+Crea una canción
+
+Bearer Token
+
+GET
+
+/api/canciones
+
+Lista las canciones del usuario
+
+Bearer Token
+
+GET
+
+/api/canciones/{id}
+
+Consulta una canción
+
+Bearer Token
+
+PUT
+
+/api/canciones/{id}
+
+Reemplaza los datos de una canción
+
+Bearer Token
+
+PATCH
+
+/api/canciones/{id}
+
+Actualiza algunos campos
+
+Bearer Token
+
+DELETE
+
+/api/canciones/{id}
+
+Elimina una canción
+
+Bearer Token
+
+Ejemplos de peticiones
+
+Registrar usuario
+
+POST /api/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Edsai Garcia",
+  "email": "usuario@example.com",
+  "password": "Canciones2026#",
+  "password_confirmation": "Canciones2026#"
+}
+
+Respuesta esperada:
+
+201 Created
+
+Iniciar sesión
+
+POST /api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "usuario@example.com",
+  "password": "Canciones2026#"
+}
+
+La respuesta contiene:
+
+{
+  "authentication": {
+    "token_type": "Bearer",
+    "access_token": "TOKEN_GENERADO"
+  }
+}
+
+Crear canción
+
+POST /api/canciones
+Authorization: Bearer TOKEN
+Content-Type: application/json
+Accept: application/json
+
+{
+  "titulo": "Amanecer en la Sierra",
+  "artista": "Edsai Garcia",
+  "album": "Raíces de Oaxaca",
+  "genero": "Regional Mexicano",
+  "compositor": "Edsai Garcia",
+  "sello_discografico": "Garrey Music",
+  "fecha_lanzamiento": "2026-07-22",
+  "duracion_segundos": 245,
+  "numero_pista": 2,
+  "idioma": "Español",
+  "bpm": 102,
+  "tonalidad": "Fa mayor",
+  "precio": 22.50,
+  "calificacion": 4.7,
+  "reproducciones": 85000,
+  "explicita": false,
+  "disponible": true
+}
+
+Respuesta esperada:
+
+201 Created
+
+Listar canciones
+
+GET /api/canciones
+Authorization: Bearer TOKEN
+Accept: application/json
+
+Respuesta esperada:
+
+200 OK
+
+Consultar canción
+
+GET /api/canciones/1
+Authorization: Bearer TOKEN
+Accept: application/json
+
+Actualizar canción
+
+PATCH /api/canciones/1
+Authorization: Bearer TOKEN
+Content-Type: application/json
+Accept: application/json
+
+{
+  "precio": 24.90,
+  "calificacion": 5,
+  "reproducciones": 150000,
+  "disponible": true
+}
+
+Eliminar canción
+
+DELETE /api/canciones/1
+Authorization: Bearer TOKEN
+Accept: application/json
+
+Validaciones
+
+La API valida, entre otros, los siguientes campos:
+
+Campo
+
+Regla principal
+
+titulo
+
+Obligatorio, máximo 150 caracteres
+
+artista
+
+Obligatorio, máximo 150 caracteres
+
+genero
+
+Obligatorio
+
+duracion_segundos
+
+Entre 1 y 7200
+
+idioma
+
+Obligatorio
+
+bpm
+
+Entre 30 y 300
+
+precio
+
+Número mayor o igual a 0
+
+calificacion
+
+Entre 0 y 5
+
+reproducciones
+
+Entero mayor o igual a 0
+
+explicita
+
+Booleano
+
+disponible
+
+Booleano
+
+Cuando los datos no son válidos, la API responde:
+
+422 Unprocessable Entity
+
+Códigos HTTP utilizados
+
+Código
+
+Significado
+
+200 OK
+
+Operación correcta
+
+201 Created
+
+Recurso creado
+
+401 Unauthorized
+
+Token ausente o inválido
+
+404 Not Found
+
+Recurso inexistente o no perteneciente al usuario
+
+405 Method Not Allowed
+
+Método HTTP incorrecto
+
+422 Unprocessable Entity
+
+Error de validación
+
+500 Internal Server Error
+
+Error interno de Laravel, MySQL o configuración
+
+Estructura principal
+
+EAGRCancionesAPI
+├── app
+│   ├── Http
+│   │   ├── Controllers
+│   │   │   └── Api
+│   │   │       ├── AuthController.php
+│   │   │       └── CancionController.php
+│   │   ├── Requests
+│   │   │   ├── StoreCancionRequest.php
+│   │   │   └── UpdateCancionRequest.php
+│   │   └── Resources
+│   │       ├── CancionResource.php
+│   │       └── UserResource.php
+│   └── Models
+│       ├── Cancion.php
+│       └── User.php
+├── bruno
+│   └── API Canciones EAGR
+├── config
+├── database
+│   ├── factories
+│   ├── migrations
+│   └── seeders
+├── docs
+├── public
+├── resources
+├── routes
+│   └── api.php
+├── storage
+├── tests
+├── .env.example
+├── .gitignore
+├── artisan
+├── composer.json
+└── README.md
+
+Base de datos
+
+Base utilizada en producción:
+
+eagr_canciones_api
+
+Tablas principales:
+
+users
+
+canciones
+
+personal_access_tokens
+
+migrations
+
+cache
+
+cache_locks
+
+jobs
+
+job_batches
+
+failed_jobs
+
+sessions
+
+Relación principal
+
+users 1 ─────── N canciones
+
+Cada canción tiene un campo:
+
+user_id
+
+que identifica al usuario propietario.
+
+Instalación local
+
+1. Clonar el repositorio
+
+git clone https://github.com/EdsaiGarrey/EAGRCancionesAPI.git
+cd EAGRCancionesAPI
+
+2. Instalar dependencias
+
+composer install
+
+3. Crear el archivo .env
+
+En Windows PowerShell:
+
+Copy-Item .env.example .env
+
+En Linux:
+
+cp .env.example .env
+
+4. Generar la clave
+
+php artisan key:generate
+
+5. Configurar MySQL
+
+Editar .env:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=eagr_canciones_api
+DB_USERNAME=TU_USUARIO
+DB_PASSWORD=TU_CONTRASEÑA
+
+6. Limpiar la configuración
+
+php artisan optimize:clear
+
+7. Ejecutar migraciones
+
+php artisan migrate
+
+8. Iniciar Laravel
+
+php artisan serve
+
+URL local:
+
+http://127.0.0.1:8000/api
+
+Pruebas con Bruno
+
+La colección se encuentra en:
+
+bruno/API Canciones EAGR
+
+Para utilizarla:
+
+Abrir Bruno.
+
+Seleccionar Open Collection.
+
+Elegir la carpeta bruno/API Canciones EAGR.
+
+Seleccionar el entorno correspondiente.
+
+Ejecutar primero Registro o Login.
+
+Copiar el access_token sin comillas.
+
+Guardarlo temporalmente en la variable token.
+
+Ejecutar las peticiones protegidas.
+
+Variables sugeridas:
+
+baseUrl = http://82.25.93.110:8082/api
+token =
+cancionId = 1
+
+Orden recomendado de pruebas
+
+Verificar el VPS con GET /api.
+
+Registrar usuario.
+
+Iniciar sesión.
+
+Guardar el token.
+
+Consultar usuario autenticado.
+
+Crear canción.
+
+Listar canciones.
+
+Consultar una canción.
+
+Actualizar la canción.
+
+Ejecutar una validación incorrecta.
+
+Eliminar la canción.
+
+Cerrar sesión.
+
+Comprobar que el token eliminado responde 401.
+
+Seguridad
+
+El repositorio no debe incluir:
+
+Archivo .env.
+
+Contraseñas reales.
+
+Claves privadas.
+
+Tokens reales de Sanctum.
+
+Contraseña del VPS.
+
+Contraseña de MySQL.
+
+Antes de subir la colección de Bruno, la variable debe quedar así:
+
+token =
+
+Documentación
+
+La guía del proyecto puede almacenarse en:
+
+docs/
+
+Estado del proyecto
+
+API REST funcional.
+
+Base de datos MySQL conectada.
+
+Autenticación mediante Laravel Sanctum.
+
+CRUD de canciones completo.
+
+Validaciones activas.
+
+Colección de Bruno configurada.
+
+Proyecto desplegado en VPS con Nginx.
