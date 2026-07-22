@@ -60,17 +60,29 @@ https://github.com/EdsaiGarrey/EAGRCancionesAPI
 <img width="1672" height="644" alt="image" src="https://github.com/user-attachments/assets/5d577e41-9119-46d5-bd11-c1edfc30d44c" />
 
 | POST | `/api/login` | Iniciar sesión |
+<img width="1592" height="611" alt="image" src="https://github.com/user-attachments/assets/abf69e10-8cd3-493b-966c-1150d207ffaa" />
+
 | GET | `/api/me` | Consultar usuario autenticado |
+<img width="1913" height="658" alt="image" src="https://github.com/user-attachments/assets/e28c9a67-e468-46e9-a5d9-7e85e4755716" />
+
 | POST | `/api/logout` | Cerrar sesión |
+<img width="1527" height="389" alt="image" src="https://github.com/user-attachments/assets/510ce25e-7c22-4f14-bb16-65d41527ede1" />
 
 ### Canciones
 
 | Método | Endpoint | Descripción |
 |---|---|---|
 | POST | `/api/canciones` | Crear canción |
+<img width="1644" height="874" alt="image" src="https://github.com/user-attachments/assets/0c45980d-bafb-4934-962d-a96a92efc6e8" />
+
 | GET | `/api/canciones` | Listar canciones |
+
 | GET | `/api/canciones/{id}` | Consultar canción |
+<img width="1521" height="901" alt="image" src="https://github.com/user-attachments/assets/f6eb7a37-82c2-4cc2-9607-1505bac74181" />
+
 | PATCH | `/api/canciones/{id}` | Actualizar canción |
+<img width="1625" height="850" alt="image" src="https://github.com/user-attachments/assets/21eb73b5-e2c6-4b9d-a02e-e0eb974ae0b5" />
+
 | DELETE | `/api/canciones/{id}` | Eliminar canción |
 
 Las rutas de canciones requieren un token Bearer generado durante el registro o el inicio de sesión.
@@ -129,6 +141,7 @@ Orden recomendado de pruebas:
 
 La base de datos utilizada en producción es:
 
+
 ```text
 eagr_canciones_api
 ```
@@ -138,6 +151,8 @@ Las tablas principales son:
 - `users`
 - `canciones`
 - `personal_access_tokens`
+  <img width="1914" height="968" alt="image" src="https://github.com/user-attachments/assets/220852f9-85de-4225-8b61-e388b01e8bf3" />
+
 
 ## Seguridad
 
